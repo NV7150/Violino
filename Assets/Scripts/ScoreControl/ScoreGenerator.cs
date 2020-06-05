@@ -135,30 +135,33 @@ namespace ScoreControl {
             var noteLength = (getNotePos(noteInfo.Notes[0]) - currPos) / POS_UNIT * scaleCorrection();
             var genPos = getGeneratePos(currPos, noteInfo) + Vector3.up * (noteLength / 2f);
 
-            var longNote = Instantiate(longNotePrefab, genPos, Quaternion.identity);
+            var longNote = Instantiate(longNotePrefab, genPos, Quaternion.identity).GetComponent<LongNote>();
 
             Material mat = null;
+            Material endMat = null;
             var lane = (NoteLane) noteInfo.Block;
             switch (lane) {
                 case NoteLane.LEFT:
                     mat = leftLongMat;
+                    endMat = leftNoteMat;
                     break;
                 
                 case NoteLane.RIGHT:
                     mat = rightLongMat;
+                    endMat = rightNoteMat;
                     break;
                 
                 case NoteLane.CENTER:
                     mat = centerLongMat;
+                    endMat = centerNoteMat;
                     break;
                 
                 default:
                     throw new InvalidProgramException();
             }
-            longNote.GetComponent<MeshRenderer>().material = mat;
-
-            var prevScale = longNote.transform.localScale;
-            longNote.transform.localScale = new Vector3(prevScale.x, noteLength, prevScale.z);
+            longNote.setMat(mat, endMat);
+            
+            longNote.setLength(noteLength);
         }
 
         private float scaleCorrection() {
