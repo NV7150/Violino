@@ -9,6 +9,9 @@ namespace ScoreControl {
         [SerializeField] private GameObject wallPrefab;
         [SerializeField] private GameObject notePrefab;
 
+        [SerializeField] private GameObject leftArrowPrefab;
+        [SerializeField] private GameObject rightArrowPrefab;
+
         [SerializeField] private Material rightNoteMat;
         [SerializeField] private Material centerNoteMat;
         [SerializeField] private Material leftNoteMat;
@@ -20,6 +23,7 @@ namespace ScoreControl {
         [SerializeField] private float noteHeight = 0.25f;
         [SerializeField] private int centerLaneIndex = 1;
         [SerializeField] private Vector3 noteOffset = Vector3.zero;
+        [SerializeField]private Vector3 arrowOffset = Vector3.zero;
 
         //数え上げの単位
         //16分・3連符同時対応のため、4と3の公倍数を推奨
@@ -27,27 +31,37 @@ namespace ScoreControl {
 
         private readonly int BLOCK_CHANGE = 3;
         
-        private ScoreInfo _info;
 
         public void generateScoreObj(ScoreInfo info) {
-            _info = info;
-            
             float pos = 0;
             NoteDirection currDir = LEFT;
             
             var notes = info.Notes;
             foreach (var note in notes) {
+                
                 float currPos = note.Num * (POS_UNIT / note.Lpb);
+                
                 generateWall(currPos, pos, currDir);
+                
                 if (note.Block == BLOCK_CHANGE) {
                     currDir = (currDir == LEFT) ? RIGHT : LEFT;
+                    
+                    generateArrow(currPos,currDir);
                 } else {
                     if (note.Type == (int) NoteType.SHORT) {
                         generateShortNote(currPos, note, currDir);
                     }
                 }
+                
                 pos = currPos;
             }
+        }
+
+        private void generateArrow(float currPos, NoteDirection dir) {
+            var arrowPos = new Vector3(0, currPos / POS_UNIT, 0) + arrowOffset;
+            
+            var prefab = (dir == LEFT) ? leftArrowPrefab : rightArrowPrefab;
+            Instantiate(prefab, arrowPos, prefab.transform.rotation);
         }
 
         private void generateWall(float currPos, float prevPos, NoteDirection currDir) {
