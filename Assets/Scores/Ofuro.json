@@ -129,5 +129,17 @@
         "block": 1,
         "type": 1,
         "notes": []
+    }, {
+        "LPB": 4,
+        "num": 64,
+        "block": 1,
+        "type": 2,
+        "notes": [{
+            "LPB": 4,
+            "num": 68,
+            "block": 1,
+            "type": 2,
+            "notes": []
+        }]
     }]
 }

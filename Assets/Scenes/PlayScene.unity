@@ -257,9 +257,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0ec7d888c0467a9f97b77d48f8b600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallParent: {fileID: 847684605}
   wallPrefab: {fileID: 4708819381923771581, guid: bf51bb6958d064c6e9a8ef1b16429757,
     type: 3}
   notePrefab: {fileID: 8396480203813602801, guid: 07d609ec4634a41d3b488550bbae5582,
+    type: 3}
+  longNotePrefab: {fileID: 234585525668254180, guid: c6e21fb06dd434f0bbbf2c4646fe59b6,
     type: 3}
   leftArrowPrefab: {fileID: 1223079667433461076, guid: 4b325f4fc2058428ebe2412ce9fd7d3e,
     type: 3}
@@ -268,13 +271,16 @@ MonoBehaviour:
   rightNoteMat: {fileID: 2100000, guid: cd70e8af759084ebea0dcf39237196fa, type: 2}
   centerNoteMat: {fileID: 2100000, guid: 63521a41bc99b4b00a558e938843a26a, type: 2}
   leftNoteMat: {fileID: 2100000, guid: c57f4bedaf09249f4955332e263f0f08, type: 2}
+  rightLongMat: {fileID: 2100000, guid: ae8c3b38538aa416d9e6e57a7e6ddf97, type: 2}
+  centerLongMat: {fileID: 2100000, guid: 3a2823b51cc2e40a4869faa936557098, type: 2}
+  leftLongMat: {fileID: 2100000, guid: becdfbb36d0dc42eebea5f1aa694d4aa, type: 2}
   rightWallMat: {fileID: 2100000, guid: 339dea78df64446dcbb9cdcb0c6a8e42, type: 2}
   leftWallMat: {fileID: 2100000, guid: 679d54356c2a843648b17b4efe15b7f4, type: 2}
   laneWidth: 1
   noteHeight: 0.25
   centerLaneIndex: 1
   noteOffset: {x: 0, y: 0, z: 0.175}
-  arrowOffset: {x: 0, y: 0, z: 0}
+  arrowOffset: {x: 0, y: 0.15, z: 0.5}
 --- !u!4 &757594842
 Transform:
   m_ObjectHideFlags: 0
@@ -288,6 +294,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &847684604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 847684605}
+  m_Layer: 0
+  m_Name: Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &847684605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847684604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
