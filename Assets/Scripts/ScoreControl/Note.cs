@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using Judge;
+using UnityEngine;
 
 namespace ScoreControl {
+    
     public class Note : MonoBehaviour {
+        [SerializeField] private GameObject noteRoot;
+        
         private NoteLane _lane;
         private NoteDirection _direction;
         private NoteType _type;
@@ -31,8 +35,8 @@ namespace ScoreControl {
         
         }
 
-        public void banish() {
-            
+        public void banish(JudgeCode banishCode) {
+            Destroy(noteRoot);
         }
     }
 }

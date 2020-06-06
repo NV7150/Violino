@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 2907545779907985991}
   m_Layer: 0
   m_Name: LongNoteEnd
-  m_TagString: Untagged
+  m_TagString: Long
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 8670461727417047875}
   m_Layer: 0
   m_Name: LongNote
-  m_TagString: Untagged
+  m_TagString: Long
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
