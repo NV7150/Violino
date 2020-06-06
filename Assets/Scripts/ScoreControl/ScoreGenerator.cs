@@ -130,10 +130,8 @@ namespace ScoreControl {
         }
 
         private void generateLongNote(float currPos, NoteInfo noteInfo, NoteDirection dir) {
-            generateShortNote(currPos, noteInfo, dir);
-            
             var noteLength = (getNotePos(noteInfo.Notes[0]) - currPos) / POS_UNIT * scaleCorrection();
-            var genPos = getGeneratePos(currPos, noteInfo) + Vector3.up * (noteLength / 2f);
+            var genPos = getGeneratePos(currPos, noteInfo);
 
             var longNote = Instantiate(longNotePrefab, genPos, Quaternion.identity).GetComponent<LongNote>();
 
@@ -159,9 +157,8 @@ namespace ScoreControl {
                 default:
                     throw new InvalidProgramException();
             }
-            longNote.setMat(mat, endMat);
             
-            longNote.setLength(noteLength);
+            longNote.initNote(lane, dir, endMat, mat, noteLength);
         }
 
         private float scaleCorrection() {

@@ -6,8 +6,7 @@ namespace Judge {
     public class JudgeLane : MonoBehaviour {
         [SerializeField] private JudgeFrame perfectFrame;
         [SerializeField] private JudgeFrame goodFrame;
-        [SerializeField] private JudgeFrame badFrame;
-
+        
         public event JudgeFrame.NoteExit onNoteExit;
 
         public event JudgeFrame.LongExit onLongExit;
@@ -25,7 +24,7 @@ namespace Judge {
         }
 
         public bool hasNote() {
-            return perfectFrame.hasNote() || goodFrame.hasNote() || badFrame.hasNote();
+            return perfectFrame.hasNote() || goodFrame.hasNote();
         }
 
         public Note getLastNote(ref JudgeCode code) {
@@ -36,9 +35,6 @@ namespace Judge {
             }else if (goodFrame.hasNote()) {
                 returnNote = goodFrame.getLastNote();
                 code = JudgeCode.GOOD;
-            }else if (badFrame.hasNote()) {
-                returnNote = badFrame.getLastNote();
-                code = JudgeCode.BAD;
             }
 
             return returnNote;

@@ -27,11 +27,7 @@ namespace Judge {
                     _point++;
                     _combo++;
                     break;
-                
-                case JudgeCode.BAD:
-                    _combo = 0;
-                    break;
-                
+
                 case JudgeCode.MISS:
                     _combo = 0;
                     break;

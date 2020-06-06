@@ -53,6 +53,8 @@ namespace Judge {
 
             if (note.Type == NoteType.SHORT) {
                 shortNotePushed(note, code);
+            } else {
+                
             }
         }
 
