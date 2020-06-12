@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
-namespace Judge {
-    public class JudgeBar : MonoBehaviour {
-        [SerializeField] private float speed = 1f;
-        
+namespace ScoreControl {
+    public class LongNoteRoot : MonoBehaviour {
+        [SerializeField]private LongNote note;
+
+        public LongNote Note => note;
+
         // Start is called before the first frame update
         void Start() {
         
@@ -11,7 +13,7 @@ namespace Judge {
 
         // Update is called once per frame
         void Update() {
-            transform.Translate(Vector3.up * (speed * Time.deltaTime));
+        
         }
     }
 }

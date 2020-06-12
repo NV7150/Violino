@@ -1,42 +1,15 @@
 ﻿using Judge;
-using UnityEngine;
 
 namespace ScoreControl {
+    public delegate void NoteBanished(Note note);
     
-    public class Note : MonoBehaviour {
-        [SerializeField] private GameObject noteRoot;
-        
-        private NoteLane _lane;
-        private NoteDirection _direction;
-        private NoteType _type;
+    public interface Note {
+        NoteType getNoteType();
+        NoteDirection getNoteDirection();
+        NoteLane getNoteLane();
 
-        private MeshRenderer _renderer;
+        void banish(JudgeCode code);
 
-        public NoteLane Lane => _lane;
-
-        public NoteDirection Direction => _direction;
-
-        public NoteType Type => _type;
-
-        public void initNote(NoteLane lane, NoteDirection dir, NoteType type, Material mat) {
-            _lane = lane;
-            _direction = dir;
-            _type = type;
-            _renderer.material = mat;
-        }
-        
-        // Start is called before the first frame update
-        void Awake() {
-            _renderer = GetComponent<MeshRenderer>();
-        }
-
-        // Update is called once per frame
-        void Update() {
-        
-        }
-
-        public void banish(JudgeCode banishCode) {
-            Destroy(noteRoot);
-        }
+        void registerOnBanished(NoteBanished func);
     }
 }

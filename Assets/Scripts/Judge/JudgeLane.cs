@@ -6,15 +6,16 @@ namespace Judge {
     public class JudgeLane : MonoBehaviour {
         [SerializeField] private JudgeFrame perfectFrame;
         [SerializeField] private JudgeFrame goodFrame;
+
+        [SerializeField]private NoteLane lane;
         
         public event JudgeFrame.NoteExit onNoteExit;
 
-        public event JudgeFrame.LongExit onLongExit;
+        public NoteLane Lane => lane;
 
         // Start is called before the first frame update
         void Start() {
             perfectFrame.onNoteExit += note => {onNoteExit?.Invoke(note);};
-            perfectFrame.onLongExit += () => {onLongExit?.Invoke();};
         }
 
 
@@ -28,16 +29,16 @@ namespace Judge {
         }
 
         public Note getLastNote(ref JudgeCode code) {
-            Note returnNote = null;
+            Note returnShortNote = null;
             if (perfectFrame.hasNote()) {
-                returnNote = perfectFrame.getLastNote();
+                returnShortNote = perfectFrame.getLastNote();
                 code = JudgeCode.PERFECT;
             }else if (goodFrame.hasNote()) {
-                returnNote = goodFrame.getLastNote();
+                returnShortNote = goodFrame.getLastNote();
                 code = JudgeCode.GOOD;
             }
 
-            return returnNote;
+            return returnShortNote;
         }
     }
 }

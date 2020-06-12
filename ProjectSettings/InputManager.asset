@@ -298,7 +298,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: a
+    positiveButton: q
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
@@ -314,7 +314,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: s
+    positiveButton: w
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000
@@ -327,10 +327,10 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Right
-    descriptiveName: d
+    descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: escape
+    positiveButton: e
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 1000

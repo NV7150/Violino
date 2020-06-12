@@ -15,6 +15,7 @@
           </e>
           <e p="ScoreControl" t="Include">
             <e p="LongNote.cs" t="Include" />
+            <e p="LongNoteroot.cs" t="Include" />
             <e p="Note.cs" t="Include" />
             <e p="NoteDirection.cs" t="Include" />
             <e p="NoteInfo.cs" t="Include" />
@@ -23,6 +24,7 @@
             <e p="ScoreFileLoader.cs" t="Include" />
             <e p="ScoreGenerator.cs" t="Include" />
             <e p="ScoreInfo.cs" t="Include" />
+            <e p="ShortNote.cs" t="Include" />
             <e p="Wall.cs" t="Include" />
           </e>
           <e p="Test" t="Include">

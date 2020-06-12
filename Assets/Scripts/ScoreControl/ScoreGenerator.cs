@@ -119,7 +119,7 @@ namespace ScoreControl {
                     throw new InvalidProgramException();
             }
 
-            var note = Instantiate(notePrefab, notePos, Quaternion.identity).GetComponent<Note>();
+            var note = Instantiate(notePrefab, notePos, Quaternion.identity).GetComponent<ShortNote>();
             note.initNote(noteLane, dir, NoteType.SHORT, noteMat);
         }
         
@@ -133,7 +133,7 @@ namespace ScoreControl {
             var noteLength = (getNotePos(noteInfo.Notes[0]) - currPos) / POS_UNIT * scaleCorrection();
             var genPos = getGeneratePos(currPos, noteInfo);
 
-            var longNote = Instantiate(longNotePrefab, genPos, Quaternion.identity).GetComponent<LongNote>();
+            var longNote = Instantiate(longNotePrefab, genPos, Quaternion.identity).GetComponent<LongNoteRoot>().Note;
 
             Material mat = null;
             Material endMat = null;

@@ -1,19 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography;
+using Judge;
+using UnityEngine;
 
 namespace ScoreControl {
-    public class LongNote : MonoBehaviour {
+    public class LongNote : MonoBehaviour, Note {
+        [SerializeField] private GameObject rootObj;
         [SerializeField] private GameObject noteStart;
         [SerializeField] private GameObject noteObj;
         [SerializeField] private GameObject noteEnd;
-        [SerializeField] private float noteEndAlpha = 225;
-        
 
         private MeshRenderer _noteObjRenderer;
         private MeshRenderer _noteEndRenderer;
+        private MeshRenderer _noteStartRenderer;
+
+        private NoteLane _lane;
+        private NoteDirection _direction;
+
+        private bool _isHolding;
+
+        private event NoteBanished onNoteBanished;
+
+        public bool IsHolding {
+            get => _isHolding;
+            set {
+                Debug.Log("changed to " + value + ":" + transform.position);
+                _isHolding = value;
+            }
+        }
 
         void Awake() {
             _noteObjRenderer = noteObj.GetComponent<MeshRenderer>();
             _noteEndRenderer = noteEnd.GetComponent<MeshRenderer>();
+            _noteStartRenderer = noteStart.GetComponent<MeshRenderer>();
         }
 
         // Start is called before the first frame update
@@ -26,16 +44,19 @@ namespace ScoreControl {
         }
 
         public void initNote(NoteLane lane, NoteDirection dir, Material sectionMat, Material longMat, float length) {
-            noteStart.GetComponent<Note>().initNote(lane, dir, NoteType.LONG, sectionMat);
             _noteObjRenderer.material = longMat;
             _noteEndRenderer.material = sectionMat;
+            _noteStartRenderer.material = sectionMat;
+            
+            _lane = lane;
+            _direction = dir;
             setLength(length);
         }
 
-        public void setLength(float length) {
+        private void setLength(float length) {
             var lcScale = noteObj.transform.localScale;
 
-            var rootTrans = transform;
+            var rootTrans = rootObj.transform;
             var rootScale = rootTrans.localScale;
             var rootPos = rootTrans.position;
             
@@ -46,6 +67,27 @@ namespace ScoreControl {
                                          
             noteEnd.transform.position = rootPos + Vector3.up * length;
             
+        }
+
+        public NoteType getNoteType() {
+            return NoteType.LONG;
+        }
+
+        public NoteDirection getNoteDirection() {
+            return _direction;
+        }
+
+        public NoteLane getNoteLane() {
+            return _lane;
+        }
+
+        public void banish(JudgeCode code) {
+            onNoteBanished?.Invoke(this);
+            rootObj.SetActive(false);
+        }
+
+        public void registerOnBanished(NoteBanished func) {
+            onNoteBanished += func;
         }
     }
 }
