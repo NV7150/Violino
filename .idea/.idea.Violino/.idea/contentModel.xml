@@ -24,6 +24,7 @@
             <e p="ScoreFileLoader.cs" t="Include" />
             <e p="ScoreGenerator.cs" t="Include" />
             <e p="ScoreInfo.cs" t="Include" />
+            <e p="ScoreUser.cs" t="Include" />
             <e p="ShortNote.cs" t="Include" />
             <e p="Wall.cs" t="Include" />
           </e>

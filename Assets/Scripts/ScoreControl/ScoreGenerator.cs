@@ -5,7 +5,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 namespace ScoreControl {
-    public class ScoreGenerator : MonoBehaviour {
+    public class ScoreGenerator : MonoBehaviour, ScoreUser {
         [SerializeField] private Transform wallParent;
         
         [SerializeField] private GameObject wallPrefab;
@@ -38,7 +38,10 @@ namespace ScoreControl {
 
         private readonly int BLOCK_CHANGE = 3;
 
-        
+        public void scoreDecided(ScoreInfo info) {
+            generateScoreObj(info);
+        }
+
         public void generateScoreObj(ScoreInfo info) {
             float pos = 0;
             NoteDirection currDir = LEFT;
