@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 718131266}
   - component: {fileID: 718131265}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PointMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260634338}
   - component: {fileID: 1260634337}
+  - component: {fileID: 1260634339}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -425,6 +426,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1260634339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260634336}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5d1d80940ed46e6915ed4c98c3385d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1711952790 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8311896862112318640, guid: 7b6eb2b37d01c4791a1ac3910ff1b4af,

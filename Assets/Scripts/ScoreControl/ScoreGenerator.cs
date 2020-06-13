@@ -38,6 +38,7 @@ namespace ScoreControl {
 
         private readonly int BLOCK_CHANGE = 3;
 
+        
         public void generateScoreObj(ScoreInfo info) {
             float pos = 0;
             NoteDirection currDir = LEFT;
@@ -102,6 +103,7 @@ namespace ScoreControl {
 
             var noteLane = (NoteLane) noteInfo.Block;
             Material noteMat;
+            
             switch (noteLane) {
                 case NoteLane.LEFT :
                     noteMat = leftNoteMat;
@@ -126,6 +128,7 @@ namespace ScoreControl {
         private Vector3 getGeneratePos(float currPos, NoteInfo noteInfo) {
             var lanePos = (noteInfo.Block - centerLaneIndex) * laneWidth;
             var notePos = new Vector3(lanePos, currPos / POS_UNIT, 0) + noteOffset;
+            
             return notePos;
         }
 
@@ -138,6 +141,7 @@ namespace ScoreControl {
             Material mat = null;
             Material endMat = null;
             var lane = (NoteLane) noteInfo.Block;
+            
             switch (lane) {
                 case NoteLane.LEFT:
                     mat = leftLongMat;
@@ -164,6 +168,5 @@ namespace ScoreControl {
         private float scaleCorrection() {
             return 1f;
         }
-
     }
 }

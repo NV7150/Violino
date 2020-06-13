@@ -28,6 +28,7 @@
             <e p="Wall.cs" t="Include" />
           </e>
           <e p="Test" t="Include">
+            <e p="Monitor.cs" t="Include" />
             <e p="ScoreGenTest.cs" t="Include" />
           </e>
         </e>

@@ -16,17 +16,9 @@ namespace ScoreControl {
         private NoteLane _lane;
         private NoteDirection _direction;
 
-        private bool _isHolding;
-
         private event NoteBanished onNoteBanished;
 
-        public bool IsHolding {
-            get => _isHolding;
-            set {
-                Debug.Log("changed to " + value + ":" + transform.position);
-                _isHolding = value;
-            }
-        }
+        public bool IsHolding { get; set; }
 
         void Awake() {
             _noteObjRenderer = noteObj.GetComponent<MeshRenderer>();
@@ -68,6 +60,7 @@ namespace ScoreControl {
             noteEnd.transform.position = rootPos + Vector3.up * length;
             
         }
+        
 
         public NoteType getNoteType() {
             return NoteType.LONG;

@@ -54,7 +54,6 @@ namespace Judge {
         }
 
         private void removeNote(Note note) {
-            // if(_enteredNotes.Contains(note))
             _enteredNotes.Remove(note);
         }
     }
