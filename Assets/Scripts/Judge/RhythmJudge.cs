@@ -12,6 +12,10 @@ namespace Judge {
         
         [SerializeField] private PointManager pointManager;
 
+        [SerializeField] private GameObject rhythmInputObj;
+
+        private RhythmInput _input;
+        
         private readonly string RIGHT_BUTTON = "Right";
         private readonly string CENTER_BUTTON = "Center";
         private readonly string LEFT_BUTTON = "Left";
@@ -25,6 +29,11 @@ namespace Judge {
         
         // Start is called before the first frame update
         void Start() {
+            _input = rhythmInputObj.GetComponent<RhythmInput>();
+            if (_input == null) {
+                throw new InvalidProgramException();
+            }
+
             rightLane.onNoteExit += onNoteExit;
             leftLane.onNoteExit += onNoteExit;
             centerLane.onNoteExit += onNoteExit;
@@ -59,11 +68,11 @@ namespace Judge {
         }
         
         void processLaneButton(string buttonName, JudgeLane lane) {
-            if (Input.GetButtonUp(buttonName) && _holdingNote[lane.Lane].Item1) {
+            if (_holdingNote[lane.Lane].Item1 && !_input.getButton(lane.Lane)) {
                 judgeLongNote(_holdingNote[lane.Lane].Item2, JudgeCode.MISS);
             }
             
-            if (Input.GetButtonDown(buttonName)) {
+            if (_input.isJudgeTiming() && _input.getButton(lane.Lane)) {
                 pushLane(lane);
             }
         }

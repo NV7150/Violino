@@ -2,16 +2,25 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="SubclassSelectorDrawer.cs" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="Judge" t="Include">
+            <e p="ButtonInput.cs" t="Include" />
             <e p="JudgeBar.cs" t="Include" />
             <e p="JudgeCode.cs" t="Include" />
             <e p="JudgeFrame.cs" t="Include" />
             <e p="JudgeLane.cs" t="Include" />
             <e p="PointManager.cs" t="Include" />
+            <e p="RhythmInput.cs" t="Include" />
             <e p="RhythmJudge.cs" t="Include" />
+          </e>
+          <e p="OutSource" t="Include">
+            <e p="SubClassSelectorAttribute.cs" t="Include" />
           </e>
           <e p="ScoreControl" t="Include">
             <e p="LongNote.cs" t="Include" />
