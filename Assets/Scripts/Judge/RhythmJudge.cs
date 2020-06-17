@@ -16,10 +16,6 @@ namespace Judge {
 
         private RhythmInput _input;
         
-        private readonly string RIGHT_BUTTON = "Right";
-        private readonly string CENTER_BUTTON = "Center";
-        private readonly string LEFT_BUTTON = "Left";
-        
         private readonly Tuple<bool, LongNote> _defaultTuple 
             = new Tuple<bool, LongNote>(false, null);
         
@@ -60,14 +56,14 @@ namespace Judge {
 
         // Update is called once per frame
         void Update() {
-            processLaneButton(LEFT_BUTTON, leftLane);
+            processLaneButton(leftLane);
 
-            processLaneButton(RIGHT_BUTTON, rightLane);
+            processLaneButton(rightLane);
 
-            processLaneButton(CENTER_BUTTON, centerLane);
+            processLaneButton(centerLane);
         }
         
-        void processLaneButton(string buttonName, JudgeLane lane) {
+        void processLaneButton(JudgeLane lane) {
             if (_holdingNote[lane.Lane].Item1 && !_input.getButton(lane.Lane)) {
                 judgeLongNote(_holdingNote[lane.Lane].Item2, JudgeCode.MISS);
             }
@@ -84,6 +80,10 @@ namespace Judge {
             JudgeCode code = JudgeCode.MISS;
             Note note = lane.getLastNote(ref code);
 
+            if (_input.getDirection() != note.getNoteDirection()) {
+                code = JudgeCode.MISS;
+            }
+
             if (note.getNoteType() == NoteType.SHORT) {
                 judgeAndBanish(note, code);
             } else {
@@ -96,9 +96,10 @@ namespace Judge {
             if (code != JudgeCode.MISS) {
                 longNote.IsHolding = true;
                 _holdingNote[longNote.getNoteLane()] = new Tuple<bool, LongNote>(true, longNote);
+                pointManager.judge(code);
+            } else {
+                judgeAndBanish(longNote, code);
             }
-            
-            pointManager.judge(code);
         }
         
         void judgeLongNote(LongNote note, JudgeCode code) {
