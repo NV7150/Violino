@@ -4,6 +4,8 @@ using ScoreControl;
 using UnityEngine;
 using UnityEngine.Playables;
 
+//TODO:ロングノーツで、ノーツに入った状態で押していない場合にミスにならないバグ
+
 namespace Judge {
     public class RhythmJudge : MonoBehaviour {
         [SerializeField] private JudgeLane rightLane;
@@ -40,16 +42,20 @@ namespace Judge {
         }
         
         private void onNoteExit(Note note) {
-            if (note.getNoteType() == NoteType.SHORT) {
-                judgeAndBanish(note, JudgeCode.MISS);
+            switch (note.getNoteType()) {
+                case NoteType.SHORT:
+                    judgeAndBanish(note, JudgeCode.MISS);
+                    break;
                 
-            } else if (note.getNoteType() == NoteType.LONG) {
-                onLongNoteExit((LongNote)note);
+                case NoteType.LONG:
+                    judgeLongNote((LongNote)note, JudgeCode.PERFECT);
+                    break;
+                
+                case NoteType.LONG_SECTION:
+                    if(!((LongNoteSection)note).LongNote.IsHolding)
+                        judgeAndBanish(note, JudgeCode.MISS);
+                    break;
             }
-        }
-        
-        private void onLongNoteExit(LongNote note) {
-            judgeLongNote(note, JudgeCode.PERFECT);
         }
         
         
@@ -68,7 +74,7 @@ namespace Judge {
                 judgeLongNote(_holdingNote[lane.Lane].Item2, JudgeCode.MISS);
             }
             
-            if (_input.isJudgeTiming() && _input.getButton(lane.Lane)) {
+            if (_input.isJudgeTiming(lane.Lane)) {
                 pushLane(lane);
             }
         }
@@ -77,11 +83,11 @@ namespace Judge {
             if (!lane.hasNote())
                 return;
             
-            JudgeCode code = JudgeCode.MISS;
+            var code = JudgeCode.MISS;
             Note note = lane.getLastNote(ref code);
 
             if (_input.getDirection() != note.getNoteDirection()) {
-                code = JudgeCode.MISS;
+                return;
             }
 
             if (note.getNoteType() == NoteType.SHORT) {

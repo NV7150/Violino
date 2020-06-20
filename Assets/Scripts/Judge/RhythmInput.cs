@@ -2,8 +2,7 @@
 
 namespace Judge {
     public interface RhythmInput {
-        bool isJudgeTiming();
-        bool isJudgeContinue();
+        bool isJudgeTiming(NoteLane lane);
         bool getButton(NoteLane lane);
         NoteDirection getDirection();
     }

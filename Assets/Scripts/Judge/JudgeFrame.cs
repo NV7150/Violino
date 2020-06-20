@@ -40,7 +40,8 @@ namespace Judge {
             if (other.CompareTag(NOTE_TAG)) {
                 var note = other.GetComponent<Note>();
                 
-                _enteredNotes.Add(other.GetComponent<Note>());
+                if(NoteTypeHelper.isJudgeableNote(note.getNoteType())) 
+                    _enteredNotes.Add(note);
             }
         }
 
@@ -54,7 +55,8 @@ namespace Judge {
         }
 
         private void removeNote(Note note) {
-            _enteredNotes.Remove(note);
+            if(NoteTypeHelper.isJudgeableNote(note.getNoteType())) 
+                _enteredNotes.Remove(note);
         }
     }
 }

@@ -21,12 +21,8 @@ namespace Judge {
             _laneButtons.Add(NoteLane.CENTER, centerButtonName);
         }
 
-        public bool isJudgeTiming() {
-            return _laneButtons.Values.Any(Input.GetButtonDown);
-        }
-
-        public bool isJudgeContinue() {
-            return _laneButtons.Values.Any(Input.GetButton);
+        public bool isJudgeTiming(NoteLane lane) {
+            return Input.GetButtonDown(_laneButtons[lane]);
         }
 
         public bool getButton(NoteLane lane) {
