@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static ScoreControl.NoteDirection;
 using Quaternion = UnityEngine.Quaternion;
@@ -42,14 +43,14 @@ namespace ScoreControl {
             generateScoreObj(info);
         }
 
-        public void generateScoreObj(ScoreInfo info) {
+        private void generateScoreObj(ScoreInfo info) {
             float pos = 0;
-            NoteDirection currDir = LEFT;
             
             var notes = info.Notes;
             NoteInfo prevNote = null;
-            foreach (var note in notes) {
+            NoteDirection currDir = checkInitialDirection(notes);
 
+            foreach (var note in notes) {
                 float currPos = getNotePos(note);
                 
                 generateWall(currPos, pos, currDir);
@@ -57,7 +58,7 @@ namespace ScoreControl {
                 if (note.Block == BLOCK_CHANGE) {
                     currDir = (currDir == LEFT) ? RIGHT : LEFT;
                     
-                    generateArrow(currPos,currDir);
+                    generateArrow(currPos, currDir);
                 } else {
                     if (note.Type == (int) NoteType.SHORT) {
                         generateShortNote(currPos, note, currDir);
@@ -73,6 +74,17 @@ namespace ScoreControl {
             if (prevNote?.Notes.Count > 0) {
                 generateWall(getNotePos(prevNote.Notes[0]), pos, currDir);
             }
+        }
+
+        private NoteDirection checkInitialDirection(IList<NoteInfo> notes) {
+            NoteDirection dir = LEFT;
+            while(notes[0].Block == BLOCK_CHANGE) {
+                dir = (dir == LEFT) ? RIGHT : LEFT;
+                notes.RemoveAt(0);
+            }
+            
+            generateArrow(0, dir);
+            return dir;
         }
 
         private float getNotePos(NoteInfo noteInfo) {
