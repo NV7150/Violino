@@ -1,12 +1,15 @@
 ﻿using Judge;
 using UnityEngine;
+using Visuals;
 
 namespace ScoreControl {
     
     public class ShortNote : MonoBehaviour, Note {
+        [SerializeField] private BanishEffect effect;
+        
         private NoteLane _lane;
         private NoteDirection _direction;
-        private NoteType _type;
+        private NoteType _type = NoteType.SHORT;
 
         private MeshRenderer _renderer;
 
@@ -29,12 +32,17 @@ namespace ScoreControl {
         }
 
         public void banish(JudgeCode banishCode) {
+            _type = NoteType.BANISHED;
             onNoteBanished?.Invoke(this);
+            effect.banishEffect(banishCode, completeBanish);
+        }
+
+        void completeBanish() {
             gameObject.SetActive(false);
         }
 
         public NoteType getNoteType() {
-            return NoteType.SHORT;
+            return _type;
         }
 
         public NoteDirection getNoteDirection() {

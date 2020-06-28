@@ -92,7 +92,7 @@ namespace Judge {
 
             if (note.getNoteType() == NoteType.SHORT) {
                 judgeAndBanish(note, code);
-            } else {
+            } else if (note.getNoteType() == NoteType.LONG){
                 longNotePushed((LongNote)note , code);
             }
         }

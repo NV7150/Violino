@@ -15,9 +15,7 @@ namespace Judge {
             _speed = _info.Bpm / 60f;
             
             var offsetHeight = _info.Offset / 500000f;
-            transform.Translate( Vector3.down * offsetHeight);
-            
-            source.Play();
+            transform.Translate(Vector3.down * offsetHeight);
         }
         
 
@@ -32,6 +30,8 @@ namespace Judge {
         }
 
         private void translateBar() {
+            if(!source.isPlaying)
+                source.Play();
             transform.Translate(Vector3.up * (_speed * Time.deltaTime));
         }
     }
