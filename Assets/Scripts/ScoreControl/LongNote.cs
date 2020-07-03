@@ -1,6 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography;
 using Judge;
 using UnityEngine;
+using Visuals;
 
 namespace ScoreControl {
     public class LongNote : MonoBehaviour, Note {
@@ -8,6 +10,8 @@ namespace ScoreControl {
         [SerializeField] private GameObject noteStart;
         [SerializeField] private GameObject noteObj;
         [SerializeField] private GameObject noteEnd;
+        [SerializeField] private List<MeshRenderer> meshes;
+        [SerializeField] private BanishEffect effect;
 
         private MeshRenderer _noteObjRenderer;
         private MeshRenderer _noteEndRenderer;
@@ -15,6 +19,8 @@ namespace ScoreControl {
 
         private NoteLane _lane;
         private NoteDirection _direction;
+
+        private NoteType _type = NoteType.LONG;
 
         private event NoteBanished onNoteBanished;
 
@@ -63,7 +69,7 @@ namespace ScoreControl {
         
 
         public NoteType getNoteType() {
-            return NoteType.LONG;
+            return _type;
         }
 
         public NoteDirection getNoteDirection() {
@@ -75,8 +81,15 @@ namespace ScoreControl {
         }
 
         public void banish(JudgeCode code) {
+            _type = NoteType.BANISHED;
+            
             onNoteBanished?.Invoke(this);
-            rootObj.SetActive(false);
+            
+            foreach (var mesh in meshes) {
+                mesh.enabled = false;
+            }
+            
+            effect.banishEffect(code, () => rootObj.SetActive(false));
         }
 
         public void registerOnBanished(NoteBanished func) {
