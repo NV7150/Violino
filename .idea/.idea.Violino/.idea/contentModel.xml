@@ -37,6 +37,9 @@
           </e>
           <e p="Visuals" t="Include">
             <e p="BanishEffect.cs" t="Include" />
+            <e p="BarEffect.cs" t="Include" />
+            <e p="HoldEffectBase.cs" t="Include" />
+            <e p="HoldEffectSimple.cs" t="Include" />
             <e p="ParticleCallBack.cs" t="Include" />
             <e p="RingEffect.cs" t="Include" />
           </e>

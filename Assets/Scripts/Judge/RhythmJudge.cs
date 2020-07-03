@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using ScoreControl;
 using UnityEngine;
-using UnityEngine.Playables;
-
-//TODO:ロングノーツで、ノーツに入った状態で押していない場合にミスにならないバグ
 
 namespace Judge {
     public class RhythmJudge : MonoBehaviour {
@@ -124,6 +121,10 @@ namespace Judge {
             note.banish(code);
             
             pointManager.judge(code);
+        }
+        
+        public bool getLaneHolding(NoteLane lane) {
+            return _holdingNote[lane].Item1;
         }
     }
 }
