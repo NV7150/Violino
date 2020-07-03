@@ -88,8 +88,16 @@ namespace ScoreControl {
             foreach (var mesh in meshes) {
                 mesh.enabled = false;
             }
-            
-            effect.banishEffect(code, () => rootObj.SetActive(false));
+
+            if (code != JudgeCode.MISS) {
+                effect.banishEffect(code, banishObj);
+            } else {
+                banishObj();
+            }
+        }
+
+        void banishObj() {
+            rootObj.SetActive(false);
         }
 
         public void registerOnBanished(NoteBanished func) {
