@@ -1,18 +1,20 @@
-﻿using ScoreControl;
+﻿using Parameters;
+using ScoreControl;
 using UnityEngine;
 
 namespace Judge {
     public class JudgeBar : MonoBehaviour , ScoreUser {
 
         [SerializeField] private AudioSource source;
-        
+        [SerializeField] private PlayerInfo plInfo;
+
         private float _speed = 1f;
         private ScoreInfo _info;
 
         public void scoreDecided(ScoreInfo info) {
             _info = info;
             
-            _speed = _info.Bpm / 60f;
+            _speed = _info.Bpm / 60f * plInfo.Speed;
             
             var offsetHeight = _info.Offset / 500000f;
             transform.Translate(Vector3.down * offsetHeight);

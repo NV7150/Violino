@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Parameters;
 using UnityEngine;
 using static ScoreControl.NoteDirection;
 using Quaternion = UnityEngine.Quaternion;
@@ -32,6 +33,8 @@ namespace ScoreControl {
         [SerializeField] private int centerLaneIndex = 1;
         [SerializeField] private Vector3 noteOffset = Vector3.zero;
         [SerializeField]private Vector3 arrowOffset = Vector3.zero;
+
+        [SerializeField] private PlayerInfo playerInfo;
 
         //数え上げの単位
         //16分・3連符同時対応のため、4と3の公倍数を推奨
@@ -74,6 +77,10 @@ namespace ScoreControl {
             if (prevNote?.Notes.Count > 0) {
                 generateWall(getNotePos(prevNote.Notes[0]), pos, currDir);
             }
+            
+            wallParent.transform.localScale = new Vector3(1, scaleCorrection(), 1);
+            // var correction = pos / POS_UNIT * (1f - scaleCorrection()) / 2f;
+            // wallParent.transform.position += Vector3.down * correction;
         }
 
         private NoteDirection checkInitialDirection(IList<NoteInfo> notes) {
@@ -92,7 +99,7 @@ namespace ScoreControl {
         }
 
         private void generateArrow(float currPos, NoteDirection dir) {
-            var arrowPos = new Vector3(0, currPos / POS_UNIT, 0) + arrowOffset;
+            var arrowPos = new Vector3(0, currPos / POS_UNIT * scaleCorrection(), 0) + arrowOffset;
             
             var prefab = (dir == LEFT) ? leftArrowPrefab : rightArrowPrefab;
             Instantiate(prefab, arrowPos, prefab.transform.rotation);
@@ -103,14 +110,22 @@ namespace ScoreControl {
             
             var wallMaterial = (currDir == LEFT) ? leftWallMat : rightWallMat;
 
-            var wallTall = 1f * (deltaPos / POS_UNIT) * scaleCorrection();
-            var wallPosY = currPos / POS_UNIT - wallTall / 2f + noteHeight / 2;
+            var wallTall = 1f * (deltaPos / POS_UNIT);
+            var wallPosY = currPos / POS_UNIT - wallTall/ 2f + noteHeight / 2;
             var wallPos = new Vector3(0, wallPosY, 0);
             
             var wallObj = Instantiate(wallPrefab, wallPos, Quaternion.identity, wallParent).GetComponent<Wall>();
             
             wallObj.initWall(wallMaterial);
             wallObj.transform.localScale = new Vector3(1, wallTall , 1);
+        }
+        
+        
+        private Vector3 getGeneratePos(float currPos, NoteInfo noteInfo) {
+            var lanePos = (noteInfo.Block - centerLaneIndex) * laneWidth;
+            var notePos = new Vector3(lanePos, currPos / POS_UNIT * scaleCorrection(), 0) + noteOffset;
+            
+            return notePos;
         }
 
         private void generateShortNote(float currPos, NoteInfo noteInfo, NoteDirection dir) {
@@ -140,15 +155,8 @@ namespace ScoreControl {
             note.initNote(noteLane, dir, NoteType.SHORT, noteMat);
         }
         
-        private Vector3 getGeneratePos(float currPos, NoteInfo noteInfo) {
-            var lanePos = (noteInfo.Block - centerLaneIndex) * laneWidth;
-            var notePos = new Vector3(lanePos, currPos / POS_UNIT, 0) + noteOffset;
-            
-            return notePos;
-        }
-
         private void generateLongNote(float currPos, NoteInfo noteInfo, NoteDirection dir) {
-            var noteLength = (getNotePos(noteInfo.Notes[0]) - currPos) / POS_UNIT * scaleCorrection();
+            var noteLength = (getNotePos(noteInfo.Notes[0]) - currPos) / POS_UNIT  * scaleCorrection();
             var genPos = getGeneratePos(currPos, noteInfo);
 
             var longNote = Instantiate(longNotePrefab, genPos, Quaternion.identity).GetComponent<LongNoteRoot>().Note;
@@ -181,7 +189,7 @@ namespace ScoreControl {
         }
 
         private float scaleCorrection() {
-            return 1f;
+            return playerInfo.Speed;
         }
     }
 }
