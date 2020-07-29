@@ -13,6 +13,8 @@ namespace Judge {
         private float _speed = 1f;
         private ScoreInfo _info;
 
+        private bool _isPlayStarted = false;
+
         public void scoreDecided(ScoreInfo info) {
             _info = info;
             
@@ -39,13 +41,20 @@ namespace Judge {
 
         // Update is called once per frame
         void Update() {
-            translateBar();
+            if (_isPlayStarted) {
+                translateBar();
+            }
         }
 
         private void translateBar() {
+            
+            transform.Translate(Vector3.up * (_speed * Time.deltaTime));
+        }
+
+        public void startPlay() {
             if(!source.isPlaying)
                 source.Play();
-            transform.Translate(Vector3.up * (_speed * Time.deltaTime));
+            _isPlayStarted = true;
         }
     }
 }
