@@ -518,6 +518,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 0}
+  plInfo: {fileID: 0}
+  judgeLanes:
+  - {fileID: 3528366280634676190}
+  - {fileID: 4563368939362333321}
+  - {fileID: 6396679306909938704}
 --- !u!114 &7264053266841592594
 MonoBehaviour:
   m_ObjectHideFlags: 0

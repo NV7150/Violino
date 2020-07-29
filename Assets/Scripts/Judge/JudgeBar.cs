@@ -1,4 +1,5 @@
-﻿using Parameters;
+﻿using System.Collections.Generic;
+using Parameters;
 using ScoreControl;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Judge {
 
         [SerializeField] private AudioSource source;
         [SerializeField] private PlayerInfo plInfo;
+        [SerializeField] private List<GameObject> judgeLanes;
 
         private float _speed = 1f;
         private ScoreInfo _info;
@@ -18,6 +20,15 @@ namespace Judge {
             
             var offsetHeight = _info.Offset / 500000f;
             transform.Translate(Vector3.down * offsetHeight);
+            
+            judgeLanes.ForEach(resizeJudgeLane);
+        }
+
+        private void resizeJudgeLane(GameObject judgeLane) {
+            var originalScale = judgeLane.transform.localScale;
+            var correctedScale = new Vector3(originalScale.x, originalScale.y * plInfo.Speed, originalScale.z);
+            judgeLane.transform.localScale = correctedScale;
+            
         }
         
 
