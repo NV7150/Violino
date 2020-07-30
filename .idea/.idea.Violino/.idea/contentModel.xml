@@ -19,6 +19,7 @@
             <e p="PlayerInfo.cs" t="Include" />
           </e>
           <e p="ScoreControl" t="Include">
+            <e p="Goal.cs" t="Include" />
             <e p="LongNote.cs" t="Include" />
             <e p="LongNoteroot.cs" t="Include" />
             <e p="LongNoteSection.cs" t="Include" />

@@ -10,6 +10,9 @@ namespace Judge {
         [SerializeField] private PlayerInfo plInfo;
         [SerializeField] private List<GameObject> judgeLanes;
 
+        private const float OFFSET_PER_SEC = 50000f;
+        private const float SEC_PER_MIN = 60f;
+
         private float _speed = 1f;
         private ScoreInfo _info;
 
@@ -18,10 +21,11 @@ namespace Judge {
         public void scoreDecided(ScoreInfo info) {
             _info = info;
             
-            _speed = _info.Bpm / 60f * plInfo.Speed;
+            _speed = _info.Bpm / SEC_PER_MIN * plInfo.Speed;
             
-            var offsetHeight = _info.Offset / 500000f;
-            transform.Translate(Vector3.down * offsetHeight);
+            var offsetHeight = _info.Offset / OFFSET_PER_SEC;
+            Debug.Log(offsetHeight);
+            transform.Translate(Vector3.down * offsetHeight * _speed);
             
             judgeLanes.ForEach(resizeJudgeLane);
         }

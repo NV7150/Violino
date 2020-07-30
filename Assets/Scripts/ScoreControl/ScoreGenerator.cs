@@ -17,6 +17,8 @@ namespace ScoreControl {
         [SerializeField] private GameObject leftArrowPrefab;
         [SerializeField] private GameObject rightArrowPrefab;
 
+        [SerializeField] private GameObject goalObject;
+
         [SerializeField] private Material rightNoteMat;
         [SerializeField] private Material centerNoteMat;
         [SerializeField] private Material leftNoteMat;
@@ -76,11 +78,11 @@ namespace ScoreControl {
 
             if (prevNote?.Notes.Count > 0) {
                 generateWall(getNotePos(prevNote.Notes[0]), pos, currDir);
+                pos = getNotePos(prevNote.Notes[0]);
             }
             
             wallParent.transform.localScale = new Vector3(1, scaleCorrection(), 1);
-            // var correction = pos / POS_UNIT * (1f - scaleCorrection()) / 2f;
-            // wallParent.transform.position += Vector3.down * correction;
+            generateGoal(pos);
         }
 
         private NoteDirection checkInitialDirection(IList<NoteInfo> notes) {
@@ -186,6 +188,12 @@ namespace ScoreControl {
             }
             
             longNote.initNote(lane, dir, endMat, mat, noteLength);
+        }
+
+        private void generateGoal(float currPos) {
+            var posY = currPos / POS_UNIT * scaleCorrection();
+            var goalObj = Instantiate(goalObject, new Vector3(0, posY, 0), Quaternion.identity);
+            goalObj.transform.position += Vector3.up * goalObj.transform.localScale.y;
         }
 
         private float scaleCorrection() {
