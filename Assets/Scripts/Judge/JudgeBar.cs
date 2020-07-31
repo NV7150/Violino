@@ -51,7 +51,6 @@ namespace Judge {
         }
 
         private void translateBar() {
-            
             transform.Translate(Vector3.up * (_speed * Time.deltaTime));
         }
 
