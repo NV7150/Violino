@@ -5,6 +5,11 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="AnimationCallback" t="Include">
+            <e p="FlagResetter.cs" t="Include" />
+            <e p="StageJudger.cs" t="Include" />
+            <e p="StageReseter.cs" t="Include" />
+          </e>
           <e p="Judge" t="Include">
             <e p="ButtonInput.cs" t="Include" />
             <e p="JudgeBar.cs" t="Include" />
@@ -14,6 +19,10 @@
             <e p="PointManager.cs" t="Include" />
             <e p="RhythmInput.cs" t="Include" />
             <e p="RhythmJudge.cs" t="Include" />
+          </e>
+          <e p="Menu" t="Include">
+            <e p="MenuFrame.cs" t="Include" />
+            <e p="Track.cs" t="Include" />
           </e>
           <e p="Parameters" t="Include">
             <e p="PlayerInfo.cs" t="Include" />
@@ -36,9 +45,11 @@
             <e p="Wall.cs" t="Include" />
           </e>
           <e p="Test" t="Include">
+            <e p="AT2.cs" t="Include" />
             <e p="Monitor.cs" t="Include" />
             <e p="PlayStarter.cs" t="Include" />
             <e p="ScoreGenTest.cs" t="Include" />
+            <e p="TrackMoveTest.cs" t="Include" />
           </e>
           <e p="Visuals" t="Include">
             <e p="BanishEffect.cs" t="Include" />
