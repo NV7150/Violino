@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perfectFrame: {fileID: 4050017858015417480}
   goodFrame: {fileID: 4431057177914963576}
-  lane: 1
+  lane: 2
 --- !u!1 &4563368939362333321
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perfectFrame: {fileID: 1539882366262001064}
   goodFrame: {fileID: 5481543594419907545}
-  lane: 0
+  lane: 1
 --- !u!1 &4627254631075988023
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   perfectFrame: {fileID: 3914345267054559329}
   goodFrame: {fileID: 2235664441212529309}
-  lane: 2
+  lane: 3
 --- !u!1 &6764235477480687126
 GameObject:
   m_ObjectHideFlags: 0

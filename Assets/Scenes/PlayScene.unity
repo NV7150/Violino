@@ -10159,9 +10159,9 @@ MonoBehaviour:
   leftWallMat: {fileID: 2100000, guid: 679d54356c2a843648b17b4efe15b7f4, type: 2}
   laneWidth: 1
   noteHeight: 0.25
-  centerLaneIndex: 1
+  centerLaneIndex: 2
   noteOffset: {x: 0, y: 0, z: 0.075}
-  arrowOffset: {x: 0, y: 0.35, z: 0.25}
+  arrowOffset: {x: 0, y: 0, z: 0.25}
   playerInfo: {fileID: 11400000, guid: 65622c88d9f924b039cc892b1bfc90fb, type: 2}
 --- !u!4 &757594842
 Transform:
