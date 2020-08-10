@@ -81,7 +81,6 @@ namespace ScoreControl {
         }
 
         public void banish(JudgeCode code) {
-            _type = NoteType.BANISHED;
             
             onNoteBanished?.Invoke(this);
             
@@ -94,6 +93,7 @@ namespace ScoreControl {
             } else {
                 banishObj();
             }
+            _type = NoteType.BANISHED;
         }
 
         void banishObj() {

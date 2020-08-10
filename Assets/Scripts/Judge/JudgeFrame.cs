@@ -42,6 +42,8 @@ namespace Judge {
                 
                 if(NoteTypeHelper.isJudgeableNote(note.getNoteType())) 
                     _enteredNotes.Add(note);
+                
+                note.registerOnBanished(removeNote);
             }
         }
 

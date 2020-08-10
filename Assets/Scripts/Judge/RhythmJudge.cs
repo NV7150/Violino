@@ -49,7 +49,8 @@ namespace Judge {
                     break;
                 
                 case NoteType.LONG_SECTION:
-                    if(!((LongNoteSection)note).LongNote.IsHolding)
+                    var section = (LongNoteSection) note;
+                    if(!section.LongNote.IsHolding)
                         judgeAndBanish(note, JudgeCode.MISS);
                     break;
             }

@@ -11,6 +11,8 @@ namespace ScoreControl {
         [SerializeField] private int type;
         [SerializeField] private List<NoteInfo> notes;
 
+        private bool _isSorted = false;
+
         public int Lpb => LPB;
 
         public int Num => num;
@@ -19,6 +21,23 @@ namespace ScoreControl {
 
         public int Type => type;
 
-        public List<NoteInfo> Notes => new List<NoteInfo>(notes);
+        public List<NoteInfo> Notes {
+            get {
+                if (_isSorted) 
+                    return new List<NoteInfo>(notes);
+                
+                notes.Sort((a,b) => a.isGreaterThan(b));
+                _isSorted = true;
+                return new List<NoteInfo>(notes);
+            }
+        }
+
+        public int isGreaterThan(NoteInfo compare) {
+            if (compare.Num == Num) {
+                return Block - compare.Block;
+            } else {
+                return Num - compare.Num;
+            }
+        }
     }
 }
