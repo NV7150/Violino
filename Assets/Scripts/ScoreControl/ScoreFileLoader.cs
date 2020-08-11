@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Parameters;
 using UnityEngine;
 
 namespace ScoreControl {
     public class ScoreFileLoader : MonoBehaviour {
+        [SerializeField] private PlayerInfo playerInfo;
+        
         [SerializeField] private List<GameObject> scoreUsers;
         [SerializeField] private bool generateOnLoad = true;
 
@@ -11,11 +14,10 @@ namespace ScoreControl {
         
         private static TextAsset _scoreJson;
         
-        public static void setScore(TextAsset score) {
-            _scoreJson = score;
-        }
 
         void Start() {
+            _scoreJson = playerInfo.ScoreText;
+            
             foreach (var userObject in scoreUsers) {
                 ScoreUser userComp;
                 try {

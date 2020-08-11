@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c07a6b027354f1fbad419f1da9423d, type: 3}
+  m_Name: Tracks
+  m_EditorClassIdentifier: 
+  tracks:
+  - name: "\u304A\u98A8\u5442\u304C\u6CB8\u304D\u307E\u3057\u305F"
+    audio: {fileID: 8300000, guid: 9eb04a6e1205c409c8023b7a02bf3229, type: 3}
+    jacket: {fileID: 21300000, guid: 61c74d66e1b3543cfaaf3942c3d52371, type: 3}
+    scores:
+    - difficulty: EASY
+      imageColor: {r: 0.16820934, g: 0.7924528, b: 0.1742699, a: 0}
+      asset: {fileID: 4900000, guid: a24186d4ab9034bb1a84d7c9c22bcc75, type: 3}

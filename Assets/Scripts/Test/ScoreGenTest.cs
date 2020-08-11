@@ -8,7 +8,7 @@ namespace Test {
         [SerializeField] private ScoreFileLoader loader;
         // Start is called before the first frame update
         void Start() {
-            ScoreFileLoader.setScore(score);
+            // ScoreFileLoader.setScore(score);
             loader.generateObj();
         }
 

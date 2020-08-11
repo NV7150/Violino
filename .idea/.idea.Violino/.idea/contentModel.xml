@@ -17,10 +17,13 @@
           </e>
           <e p="Menu" t="Include">
             <e p="MenuFrame.cs" t="Include" />
-            <e p="Track.cs" t="Include" />
+            <e p="MenuManager.cs" t="Include" />
+            <e p="TrackNode.cs" t="Include" />
           </e>
           <e p="Parameters" t="Include">
             <e p="PlayerInfo.cs" t="Include" />
+            <e p="Track.cs" t="Include" />
+            <e p="TracksInfo.cs" t="Include" />
           </e>
           <e p="ScoreControl" t="Include">
             <e p="Goal.cs" t="Include" />
