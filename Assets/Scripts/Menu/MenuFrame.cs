@@ -35,14 +35,13 @@ namespace Menu {
                 if (_isMoving)
                     return;
                 
-                if (value <= 0) {
-                    value = TrackNum;
-                }else if (TrackNum < value) {
-                    value = 1;
+                if (value < 0) {
+                    value = TrackNum - 1;
+                }else if (TrackNum <= value) {
+                    value = 0;
                 }
 
-                _currentTrack = value;
-                setTrackPos();
+                setTrackPos(value);
             }
         }
 
@@ -63,18 +62,20 @@ namespace Menu {
         private void setFrameSize() {
             _frameSize = _trackNum * (nodePadding + nodeSize) - nodePadding;
             _rectTransform.sizeDelta = new Vector2(_frameSize, 0);
-            CurrentTrack = 1;
+            CurrentTrack = 0;
         }
 
-        private IEnumerator moveRoutine() {
+        private IEnumerator moveRoutine(int trackNum) {
             if(_isMoving)
                 yield break;
             
             _isMoving = true;
             
             float currPos = moveSpeed;
+            var extraNum = TrackNum - (trackNum + 1);
+            
             var startPos = _rectTransform.anchoredPosition;
-            var endPosX = (_currentTrack - 1) * (nodePadding + nodeSize) + (nodeSize / 2f) - (_frameSize / 2f);
+            var endPosX = extraNum * (nodePadding + nodeSize) + (nodeSize / 2f) - (_frameSize / 2f);
             var endPos = Vector2.right * endPosX;
             
             while (currPos < 1) {
@@ -83,12 +84,13 @@ namespace Menu {
                 yield return new WaitForSeconds(DELTA_TIME);
             }
             _rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, 1f);
-            
+
+            _currentTrack = trackNum;
             _isMoving = false;
         }
         
-        private void setTrackPos() {
-            StartCoroutine(moveRoutine());
+        private void setTrackPos(int trackNum) {
+            StartCoroutine(moveRoutine(trackNum));
         }
         
     }

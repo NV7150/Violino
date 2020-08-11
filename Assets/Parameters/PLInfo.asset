@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: PLInfo
   m_EditorClassIdentifier: 
   speed: 2
+  selectedAudio: {fileID: 8300000, guid: 9eb04a6e1205c409c8023b7a02bf3229, type: 3}
+  scoreText: {fileID: 4900000, guid: a24186d4ab9034bb1a84d7c9c22bcc75, type: 3}

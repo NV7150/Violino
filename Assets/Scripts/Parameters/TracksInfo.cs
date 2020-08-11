@@ -11,5 +11,9 @@ namespace Parameters {
         public Track getTrack(int id) {
             return tracks[id];
         }
+
+        public int getTrackNum() {
+            return tracks.Count;
+        }
     }
 }

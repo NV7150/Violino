@@ -18,6 +18,8 @@ namespace Parameters {
 
         public AudioClip Audio => audio;
 
+        public Sprite Jacket => jacket;
+
         public Score getScore(string dif) {
             if (_isInit) 
                 return _scores[dif];
