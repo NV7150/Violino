@@ -16,7 +16,7 @@ namespace Menu {
         public int SelectingTrack {
             get => _selectingTrack;
             set {
-                if (menuFrame.CurrentTrack != _selectingTrack)
+                if (menuFrame.CurrentNode != _selectingTrack)
                     return;
                 
                 if (value < 0) {
@@ -26,14 +26,14 @@ namespace Menu {
                 }
                 
                 _selectingTrack = value;
-                menuFrame.CurrentTrack = _selectingTrack;
+                menuFrame.CurrentNode = _selectingTrack;
             }
         }
 
         // Start is called before the first frame update
         void Start() {
             initMenu();
-            menuFrame.TrackNum = tracks.getTrackNum();
+            menuFrame.NodeNum = tracks.getTrackNum();
         }
 
         private void initMenu() {

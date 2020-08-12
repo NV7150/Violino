@@ -32,17 +32,19 @@ namespace Parameters {
             
             return _scores[dif];
         }
+
+        public List<Score> Scores => new List<Score>(scores);
     }
 
     [Serializable]
     public class Score {
         [SerializeField] private string difficulty;
         [SerializeField] private Color imageColor;
-        [SerializeField] private TextAsset asset;
+        [SerializeField] private TextAsset scoreFile;
 
         public string Difficulty => difficulty;
 
-        public TextAsset Asset => asset;
+        public TextAsset ScoreFile => scoreFile;
 
         public Color ImageColor => imageColor;
     }
