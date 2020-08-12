@@ -14,7 +14,8 @@ namespace Parameters {
         public float Speed {
             get => speed;
             set {
-                if(MAX_PLAY_SPEED >= value && 0 < value ) 
+                //微小な数を足して誤差修正
+                if(MAX_PLAY_SPEED + 1.0e-6f > value && 0 < value ) 
                     speed = value;
             }
         }

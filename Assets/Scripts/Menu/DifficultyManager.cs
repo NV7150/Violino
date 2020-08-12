@@ -71,15 +71,9 @@ namespace Menu {
         public void selected() {
             var score = _difNodes[_selecting].Score;
             plInfo.ScoreText = score.ScoreFile;
-            
-            clearNodes();
         }
 
-        public void cancelled() {
-            clearNodes();
-        }
-
-        private void clearNodes() {
+        public void clearNodes() {
             foreach (var node in _difNodes) {
                 Destroy(node.gameObject);
             }

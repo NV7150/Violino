@@ -20,6 +20,7 @@
             <e p="MenuFrame.cs" t="Include" />
             <e p="MenuManager.cs" t="Include" />
             <e p="ScoreNode.cs" t="Include" />
+            <e p="SpeedManager.cs" t="Include" />
             <e p="TrackNode.cs" t="Include" />
           </e>
           <e p="Parameters" t="Include">
@@ -50,6 +51,7 @@
             <e p="PlayStarter.cs" t="Include" />
             <e p="ScoreGenTest.cs" t="Include" />
             <e p="ScoreMenuTest.cs" t="Include" />
+            <e p="SpeedChangeTest.cs" t="Include" />
             <e p="TrackMoveTest.cs" t="Include" />
           </e>
           <e p="Visuals" t="Include">
