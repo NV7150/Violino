@@ -41,7 +41,6 @@ namespace Menu {
         
         private void updateSpeed() {
             text.text = $"{playerInfo.Speed:f1}";
-            Debug.Log(playerInfo.Speed);
         }
         
     }

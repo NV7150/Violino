@@ -4,7 +4,7 @@ using Parameters;
 using UnityEngine;
 
 namespace Menu {
-    public class MenuManager : MonoBehaviour {
+    public class TrackChooseManager : MonoBehaviour {
         [SerializeField] private TracksInfo tracks;
         [SerializeField] private PlayerInfo playerInfo;
         [SerializeField] private MenuFrame menuFrame;
@@ -55,8 +55,10 @@ namespace Menu {
             
         }
 
-        public void selected() {
-            Debug.Log(tracks.getTrack(_selectingTrack).Name);
+        public Track selected() {
+            var selectedTrack = tracks.getTrack(_selectingTrack);
+            playerInfo.SelectedAudio = selectedTrack.Audio;
+            return selectedTrack;
         }
     }
 }

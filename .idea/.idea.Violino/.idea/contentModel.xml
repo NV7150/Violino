@@ -19,8 +19,10 @@
             <e p="DifficultyManager.cs" t="Include" />
             <e p="MenuFrame.cs" t="Include" />
             <e p="MenuManager.cs" t="Include" />
+            <e p="NewBehaviourScript.cs" t="Include" />
             <e p="ScoreNode.cs" t="Include" />
             <e p="SpeedManager.cs" t="Include" />
+            <e p="TrackChooseManager.cs" t="Include" />
             <e p="TrackNode.cs" t="Include" />
           </e>
           <e p="Parameters" t="Include">
@@ -29,6 +31,7 @@
             <e p="TracksInfo.cs" t="Include" />
           </e>
           <e p="ScoreControl" t="Include">
+            <e p="AudioLoader.cs" t="Include" />
             <e p="Goal.cs" t="Include" />
             <e p="LongNote.cs" t="Include" />
             <e p="LongNoteroot.cs" t="Include" />
@@ -47,6 +50,7 @@
           </e>
           <e p="Test" t="Include">
             <e p="AT2.cs" t="Include" />
+            <e p="MenuTest.cs" t="Include" />
             <e p="Monitor.cs" t="Include" />
             <e p="PlayStarter.cs" t="Include" />
             <e p="ScoreGenTest.cs" t="Include" />

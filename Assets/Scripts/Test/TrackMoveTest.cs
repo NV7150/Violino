@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Test {
     public class TrackMoveTest : MonoBehaviour {
-        [SerializeField] private MenuManager man;
+        [SerializeField] private TrackChooseManager man;
 
         // Start is called before the first frame update
         void Start() {
