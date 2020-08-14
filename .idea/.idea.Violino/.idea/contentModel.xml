@@ -19,10 +19,10 @@
             <e p="DifficultyManager.cs" t="Include" />
             <e p="MenuFrame.cs" t="Include" />
             <e p="MenuManager.cs" t="Include" />
-            <e p="NewBehaviourScript.cs" t="Include" />
             <e p="ScoreNode.cs" t="Include" />
             <e p="SpeedManager.cs" t="Include" />
             <e p="TrackChooseManager.cs" t="Include" />
+            <e p="TrackName.cs" t="Include" />
             <e p="TrackNode.cs" t="Include" />
           </e>
           <e p="Parameters" t="Include">

@@ -11,6 +11,10 @@ namespace Menu {
 
         [SerializeField] private GameObject trackNodeObj;
 
+        public delegate void TrackChanged(Track track);
+
+        public event TrackChanged onTrackChanged;
+
         private int _selectingTrack = 0;
 
         public int SelectingTrack {
@@ -27,6 +31,8 @@ namespace Menu {
                 
                 _selectingTrack = value;
                 menuFrame.CurrentNode = _selectingTrack;
+
+                onTrackChanged?.Invoke(tracks.getTrack(_selectingTrack));
             }
         }
 

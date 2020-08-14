@@ -26,6 +26,12 @@ MonoBehaviour:
     - difficulty: Hard
       imageColor: {r: 0.7921569, g: 0.16862743, b: 0.18622175, a: 1}
       scoreFile: {fileID: 4900000, guid: a24186d4ab9034bb1a84d7c9c22bcc75, type: 3}
+    - difficulty: LUNATIC
+      imageColor: {r: 0.7921569, g: 0.16862743, b: 0.65547556, a: 1}
+      scoreFile: {fileID: 4900000, guid: a24186d4ab9034bb1a84d7c9c22bcc75, type: 3}
+    - difficulty: NIGHTMARE
+      imageColor: {r: 0, g: 0, b: 0, a: 1}
+      scoreFile: {fileID: 4900000, guid: a24186d4ab9034bb1a84d7c9c22bcc75, type: 3}
   - name: ganymede_kamome_mix
     audio: {fileID: 8300000, guid: c94b48bdbae8840f89c0eb68f3b0df97, type: 3}
     jacket: {fileID: 21300000, guid: 75b05fe20154a49efb4dfbab8a98abc0, type: 3}

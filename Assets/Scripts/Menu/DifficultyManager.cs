@@ -13,6 +13,8 @@ namespace Menu {
         
         [SerializeField] private GameObject difNodePrefab;
 
+        [SerializeField] private GameObject backGround;
+
         private readonly List<ScoreNode> _difNodes = new List<ScoreNode>();
 
         private int _selecting = 0;
@@ -37,7 +39,7 @@ namespace Menu {
 
         // Start is called before the first frame update
         void Start() {
-            menuImage.enabled = false;
+            clearNodes();
         }
 
         // Update is called once per frame
@@ -46,7 +48,7 @@ namespace Menu {
         }
 
         public void enableMenu(Track track) {
-            
+            backGround.SetActive(true);
             var scores = track.Scores;
             _maxSelect = scores.Count;
             _selecting = 0;
@@ -80,6 +82,7 @@ namespace Menu {
             _difNodes.Clear();
             menuImage.enabled = false;
             _isEnable = false;
+            backGround.SetActive(false);
         }
     }
 }
