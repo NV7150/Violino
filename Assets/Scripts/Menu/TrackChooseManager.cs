@@ -7,20 +7,23 @@ namespace Menu {
     public class TrackChooseManager : MonoBehaviour {
         [SerializeField] private TracksInfo tracks;
         [SerializeField] private PlayerInfo playerInfo;
-        [SerializeField] private MenuFrame menuFrame;
+        
+        [SerializeField] private MenuFrame trackMenuFrame;
+        [SerializeField] private MenuFrame nameMenuFrame;
 
-        [SerializeField] private GameObject trackNodeObj;
-
+        [SerializeField] private GameObject trackNodePrefab;
+        [SerializeField] private GameObject nameNodePrefab;
+        
+        private int _selectingTrack = 0;
+        
         public delegate void TrackChanged(Track track);
 
         public event TrackChanged onTrackChanged;
-
-        private int _selectingTrack = 0;
-
+        
         public int SelectingTrack {
             get => _selectingTrack;
             set {
-                if (menuFrame.CurrentNode != _selectingTrack)
+                if (trackMenuFrame.CurrentNode != _selectingTrack)
                     return;
                 
                 if (value < 0) {
@@ -30,30 +33,40 @@ namespace Menu {
                 }
                 
                 _selectingTrack = value;
-                menuFrame.CurrentNode = _selectingTrack;
+                trackMenuFrame.CurrentNode = _selectingTrack;
+                nameMenuFrame.CurrentNode = _selectingTrack;
 
                 onTrackChanged?.Invoke(tracks.getTrack(_selectingTrack));
             }
         }
 
+
         // Start is called before the first frame update
         void Start() {
             initMenu();
-            menuFrame.NodeNum = tracks.getTrackNum();
+            trackMenuFrame.NodeNum = tracks.getTrackNum();
+            nameMenuFrame.NodeNum = tracks.getTrackNum();
         }
+
 
         private void initMenu() {
             for (int i = 0; i < tracks.getTrackNum(); i++) {
                 var track = tracks.getTrack(i);
-                var node = generateTrack(track);
+                generateTrack(track);
+                generateName(track);
             }
         }
 
-        private TrackNode generateTrack(Track track) {
-            var obj = Instantiate(trackNodeObj, menuFrame.transform);
+        private void generateTrack(Track track) {
+            var obj = Instantiate(trackNodePrefab, trackMenuFrame.transform);
             var trackNode = obj.GetComponent<TrackNode>();
             trackNode.Track = track;
-            return trackNode;
+        }
+
+        private void generateName(Track track) {
+            var obj = Instantiate(nameNodePrefab, nameMenuFrame.transform);
+            var nameNode = obj.GetComponent<NameNode>();
+            nameNode.Name = track.Name;
         }
 
         // Update is called once per frame
