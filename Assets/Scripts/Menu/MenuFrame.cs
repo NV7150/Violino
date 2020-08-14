@@ -3,13 +3,20 @@ using System.Collections;
 using UnityEngine;
 
 namespace Menu {
+    public enum MenuDirection {
+        UP,
+        DOWN,
+        RIGHT,
+        LEFT
+    }
+    
     public class MenuFrame : MonoBehaviour {
-
+        [SerializeField] private MenuDirection direction;
+        
         [SerializeField] private float nodePadding;
         [SerializeField] private float nodeSize;
         [SerializeField] private float moveSpeed;
-
-        private static readonly float DELTA_TIME = 0.025f;
+        [SerializeField]private float deltaTime = 0.025f;
 
         private int _nodeNum = 0;
         private int _currentNode = 0;
@@ -58,7 +65,13 @@ namespace Menu {
 
         private void setFrameSize() {
             _frameSize = _nodeNum * (nodePadding + nodeSize) - nodePadding;
-            _rectTransform.sizeDelta = new Vector2(_frameSize, 0);
+            
+            if (direction == MenuDirection.LEFT || direction == MenuDirection.RIGHT) {
+                _rectTransform.sizeDelta = new Vector2(_frameSize, 0);
+            } else {
+                _rectTransform.sizeDelta = new Vector2(0, _frameSize);
+            }
+
             CurrentNode = 0;
         }
 
@@ -72,13 +85,13 @@ namespace Menu {
             var extraNum = NodeNum - (moveTo + 1);
             
             var startPos = _rectTransform.anchoredPosition;
-            var endPosX = extraNum * (nodePadding + nodeSize) + (nodeSize / 2f) - (_frameSize / 2f);
-            var endPos = Vector2.right * endPosX;
+            var endPosScalar = extraNum * (nodePadding + nodeSize) + (nodeSize / 2f) - (_frameSize / 2f);
+            var endPos = getDirection(direction) * endPosScalar;
             
             while (currPos < 1) {
                 _rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, currPos);
                 currPos += moveSpeed;
-                yield return new WaitForSeconds(DELTA_TIME);
+                yield return new WaitForSeconds(deltaTime);
             }
             _rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, 1f);
 
@@ -88,6 +101,25 @@ namespace Menu {
         
         private void setNodePos(int trackNum) {
             StartCoroutine(moveRoutine(trackNum));
+        }
+
+        private Vector2 getDirection(MenuDirection dir) {
+            switch (dir) {
+                case MenuDirection.UP:
+                    return Vector2.up;
+                
+                case MenuDirection.DOWN:
+                    return Vector2.down;
+                
+                case MenuDirection.RIGHT:
+                    return Vector2.right;
+                
+                case MenuDirection.LEFT:
+                    return Vector2.left;
+                
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
+            }
         }
         
     }
