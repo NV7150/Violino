@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ScoreControl {
     public class Goal : MonoBehaviour {
         [SerializeField] private string playerTag = "bar";
+        [SerializeField] private string resultSceneName = "ResultScene";
         
         // Start is called before the first frame update
         void Start() {
@@ -22,8 +24,7 @@ namespace ScoreControl {
         }
 
         private void endGame() {
-            //TODO:実装
-            Debug.Log("goal!");
+            SceneManager.LoadScene(resultSceneName);
         }
     }
 }

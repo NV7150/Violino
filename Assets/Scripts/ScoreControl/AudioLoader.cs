@@ -14,7 +14,7 @@ namespace ScoreControl {
 
         // Start is called before the first frame update
         void Start() {
-            _audioSource.clip = plInfo.SelectedAudio;
+            _audioSource.clip = plInfo.Track.Audio;
         }
 
         // Update is called once per frame

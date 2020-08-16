@@ -76,7 +76,7 @@ namespace Menu {
 
         public Track selected() {
             var selectedTrack = tracks.getTrack(_selectingTrack);
-            playerInfo.SelectedAudio = selectedTrack.Audio;
+            playerInfo.Track = selectedTrack;
             return selectedTrack;
         }
     }

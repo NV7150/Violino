@@ -27,8 +27,13 @@
           </e>
           <e p="Parameters" t="Include">
             <e p="PlayerInfo.cs" t="Include" />
+            <e p="ResultInfo.cs" t="Include" />
             <e p="Track.cs" t="Include" />
             <e p="TracksInfo.cs" t="Include" />
+          </e>
+          <e p="Result" t="Include">
+            <e p="PlayResult.cs" t="Include" />
+            <e p="TrackResult.cs" t="Include" />
           </e>
           <e p="ScoreControl" t="Include">
             <e p="AudioLoader.cs" t="Include" />

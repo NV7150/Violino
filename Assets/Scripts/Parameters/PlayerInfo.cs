@@ -8,8 +8,8 @@ namespace Parameters {
         
         [SerializeField] private float speed = 1.0f;
 
-        [SerializeField] private AudioClip selectedAudio;
-        [SerializeField] private TextAsset scoreText;
+        [SerializeField] private Track track;
+        [SerializeField] private Score score;
         
         public float Speed {
             get => speed;
@@ -20,14 +20,14 @@ namespace Parameters {
             }
         }
 
-        public AudioClip SelectedAudio {
-            get => selectedAudio;
-            set => selectedAudio = value;
+        public Track Track {
+            get => track;
+            set => track = value;
         }
 
-        public TextAsset ScoreText {
-            get => scoreText;
-            set => scoreText = value;
+        public Score Score {
+            get => score;
+            set => score = value;
         }
     }
 }

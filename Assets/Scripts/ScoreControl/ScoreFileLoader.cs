@@ -16,7 +16,7 @@ namespace ScoreControl {
         
 
         void Start() {
-            _scoreJson = playerInfo.ScoreText;
+            _scoreJson = playerInfo.Score.ScoreFile;
             
             foreach (var userObject in scoreUsers) {
                 ScoreUser userComp;

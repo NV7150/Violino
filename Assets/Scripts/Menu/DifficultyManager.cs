@@ -72,7 +72,7 @@ namespace Menu {
 
         public void selected() {
             var score = _difNodes[_selecting].Score;
-            plInfo.ScoreText = score.ScoreFile;
+            plInfo.Score = score;
         }
 
         public void clearNodes() {
