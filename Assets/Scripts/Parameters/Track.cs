@@ -34,6 +34,10 @@ namespace Parameters {
         }
 
         public List<Score> Scores => new List<Score>(scores);
+
+        public override string ToString() {
+            return Name;
+        }
     }
 
     [Serializable]
@@ -47,6 +51,10 @@ namespace Parameters {
         public TextAsset ScoreFile => scoreFile;
 
         public Color ImageColor => imageColor;
+
+        public override string ToString() {
+            return difficulty;
+        }
     }
 
 }

@@ -37,19 +37,8 @@ MonoBehaviour:
     jacket: {fileID: 21300000, guid: 75b05fe20154a49efb4dfbab8a98abc0, type: 3}
     scores:
     - difficulty: LUNATIC
-      imageColor: {r: 0.7921569, g: 0.16862743, b: 0.7482519, a: 0}
-      scoreFile: {fileID: 0}
-  - name: ganymede_kamome_mix2
-    audio: {fileID: 8300000, guid: c94b48bdbae8840f89c0eb68f3b0df97, type: 3}
-    jacket: {fileID: 21300000, guid: 75b05fe20154a49efb4dfbab8a98abc0, type: 3}
-    scores:
-    - difficulty: LUNATIC
-      imageColor: {r: 0.7921569, g: 0.16862743, b: 0.7482519, a: 0}
-      scoreFile: {fileID: 0}
-  - name: ganymede_kamome_mix3
-    audio: {fileID: 8300000, guid: c94b48bdbae8840f89c0eb68f3b0df97, type: 3}
-    jacket: {fileID: 21300000, guid: 75b05fe20154a49efb4dfbab8a98abc0, type: 3}
-    scores:
-    - difficulty: LUNATIC
-      imageColor: {r: 0.7921569, g: 0.16862743, b: 0.7482519, a: 0}
-      scoreFile: {fileID: 0}
+      imageColor: {r: 0.7921569, g: 0.16862743, b: 0.7482519, a: 1}
+      scoreFile: {fileID: 4900000, guid: 1dbe9c756f8f2479693d099d2850e23a, type: 3}
+    - difficulty: LUNATIC2
+      imageColor: {r: 0.7921569, g: 0.16862743, b: 0.7482519, a: 1}
+      scoreFile: {fileID: 4900000, guid: 1dbe9c756f8f2479693d099d2850e23a, type: 3}

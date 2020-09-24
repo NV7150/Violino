@@ -48,6 +48,8 @@ namespace Menu {
         }
 
         public void enableMenu(Track track) {
+            Debug.Log("Menu:" + track);
+            
             backGround.SetActive(true);
             var scores = track.Scores;
             _maxSelect = scores.Count;
@@ -55,6 +57,7 @@ namespace Menu {
             menuFrame.NodeNum = _maxSelect;
 
             foreach (var score in scores) {
+                Debug.Log(score);
                 generateScoreNode(score);
             }
             

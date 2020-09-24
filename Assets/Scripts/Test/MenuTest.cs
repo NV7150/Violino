@@ -12,11 +12,11 @@ namespace Test {
 
         // Update is called once per frame
         void Update() {
-            if (Input.GetKeyDown(KeyCode.A)) {
+            if (Input.GetKeyDown(KeyCode.I)) {
                 menuManager.prev();
-            }else if (Input.GetKeyDown(KeyCode.D)) {
+            }else if (Input.GetKeyDown(KeyCode.O)) {
                 menuManager.next();
-            }else if (Input.GetKeyDown(KeyCode.S)) {
+            }else if (Input.GetKeyDown(KeyCode.W)) {
                 menuManager.enter();
             }
         }
