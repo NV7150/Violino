@@ -6,16 +6,19 @@ namespace Judge {
     public class JudgeLane : MonoBehaviour {
         [SerializeField] private JudgeFrame perfectFrame;
         [SerializeField] private JudgeFrame goodFrame;
+        [SerializeField] private JudgeFrame holdFrame;
 
         [SerializeField]private NoteLane lane;
         
         public event JudgeFrame.NoteExit onNoteExit;
+        public event JudgeFrame.NoteExit onNoteExitHold;
 
         public NoteLane Lane => lane;
 
         // Start is called before the first frame update
         void Start() {
             perfectFrame.onNoteExit += note => {onNoteExit?.Invoke(note);};
+            holdFrame.onNoteExit += note => { onNoteExitHold?.Invoke(note); };
         }
 
 

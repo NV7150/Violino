@@ -30,8 +30,11 @@ namespace Judge {
             }
 
             rightLane.onNoteExit += onNoteExit;
+            rightLane.onNoteExitHold += onNoteExitLong;
             leftLane.onNoteExit += onNoteExit;
+            leftLane.onNoteExitHold += onNoteExitLong;
             centerLane.onNoteExit += onNoteExit;
+            centerLane.onNoteExitHold += onNoteExitLong;
 
             foreach (NoteLane lane in Enum.GetValues(typeof(NoteLane))) {
                 _holdingNote.Add(lane, _defaultTuple);
@@ -44,15 +47,21 @@ namespace Judge {
                     judgeAndBanish(note, JudgeCode.MISS);
                     break;
                 
-                case NoteType.LONG:
-                    judgeLongNote((LongNote)note, JudgeCode.PERFECT);
-                    break;
+                // case NoteType.LONG:
+                //     judgeLongNote((LongNote)note, JudgeCode.PERFECT);
+                //     break;
                 
                 case NoteType.LONG_SECTION:
                     var section = (LongNoteSection) note;
                     if(!section.LongNote.IsHolding)
                         judgeAndBanish(note, JudgeCode.MISS);
                     break;
+            }
+        }
+
+        private void onNoteExitLong(Note note) {
+            if (note.getNoteType() == NoteType.LONG) {
+                judgeLongNote((LongNote)note, JudgeCode.PERFECT);
             }
         }
         
