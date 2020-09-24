@@ -133,7 +133,17 @@ namespace Menu {
                 _rectTransform.sizeDelta = new Vector2(0, _frameSize);
             }
 
-            CurrentNode = 0;
+            _currentNode = 0;
+
+            _rectTransform.anchoredPosition = getEndMovePos(0);
+        }
+
+        private Vector2 getEndMovePos(int moveTo) {
+            var extraNum = NodeNum - (moveTo + 1);
+
+            var endPosScalar = extraNum * (nodeSpacing + _directionSize) + (_directionSize / 2f) - (_frameSize / 2f);
+            var endPos = getDirection() * endPosScalar;
+            return endPos;
         }
 
         private IEnumerator moveRoutine(int moveTo) {
@@ -143,11 +153,9 @@ namespace Menu {
             _isMoving = true;
 
             float currPos = moveSpeed;
-            var extraNum = NodeNum - (moveTo + 1);
 
             var startPos = _rectTransform.anchoredPosition;
-            var endPosScalar = extraNum * (nodeSpacing + _directionSize) + (_directionSize / 2f) - (_frameSize / 2f);
-            var endPos = getDirection() * endPosScalar;
+            var endPos = getEndMovePos(moveTo);
 
             while (currPos < 1) {
                 _rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, currPos);
