@@ -68,14 +68,22 @@ namespace Menu {
             switch (_currMode) {
                 case MenuMode.TRACK_CHOOSE:
                     _currTrack = trackChooseManager.selected();
+                    
                     difficultyManager.enableMenu(_currTrack);
+                    difficultyManager.enterMode();
+                    
                     speedManager.enableObj();
+                    speedManager.exitMode();
+                    
                     _currMode = MenuMode.DIFFICULTY;
-                    //TODO:speedManとDifManに有効化機能をつける
                     break;
                 
                 case MenuMode.DIFFICULTY:
                     difficultyManager.selected();
+                    difficultyManager.exitMode();
+                    
+                    speedManager.enterMode();
+                    
                     _currMode = MenuMode.SPEED;
                     break;
                 
@@ -94,5 +102,6 @@ namespace Menu {
         public void cancel() {
             
         }
+
     }
 }

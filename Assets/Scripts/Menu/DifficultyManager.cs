@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Parameters;
 using UnityEngine;
 using UnityEngine.UI;
+using Visuals;
 
 namespace Menu {
     public class DifficultyManager : MonoBehaviour {
@@ -14,6 +15,8 @@ namespace Menu {
         [SerializeField] private GameObject difNodePrefab;
 
         [SerializeField] private GameObject backGround;
+        
+        [SerializeField] private BgColorChanger changer;
 
         private readonly List<ScoreNode> _difNodes = new List<ScoreNode>();
 
@@ -64,6 +67,14 @@ namespace Menu {
             menuImage.enabled = true;
             _isEnable = true;
             menuFrame.CurrentNode = 0;
+        }
+
+        public void enterMode() {
+            changer.enableImage();
+        }
+
+        public void exitMode() {
+            changer.disableImage();
         }
         
         private void generateScoreNode(Score score) {

@@ -1,6 +1,7 @@
 ﻿using Parameters;
 using UnityEngine;
 using UnityEngine.UI;
+using Visuals;
 
 namespace Menu {
     public class SpeedManager : MonoBehaviour {
@@ -9,6 +10,8 @@ namespace Menu {
         [SerializeField] private GameObject dispObj;
         [SerializeField] private float speedUnit = 0.1f;
         [SerializeField] private float speedDefault = 1.0f;
+
+        [SerializeField] private BgColorChanger changer;
 
         // Start is called before the first frame update
         void Start() {
@@ -23,6 +26,14 @@ namespace Menu {
         public void enableObj() {
             dispObj.SetActive(true);
             playerInfo.Speed = speedDefault;
+        }
+
+        public void enterMode() {
+            changer.enableImage();
+        }
+
+        public void exitMode() {
+            changer.disableImage();
         }
 
         public void disableObj() {

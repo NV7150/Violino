@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Parameters;
 using UnityEngine;
+using Visuals;
 
 namespace Menu {
     public class TrackChooseManager : MonoBehaviour {
@@ -13,7 +14,7 @@ namespace Menu {
 
         [SerializeField] private GameObject trackNodePrefab;
         [SerializeField] private GameObject nameNodePrefab;
-        
+
         private int _selectingTrack = 0;
         
         public delegate void TrackChanged(Track track);

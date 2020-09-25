@@ -43,7 +43,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -118,6 +118,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
@@ -173,6 +175,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -259,6 +262,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &658066518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +278,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -368,6 +373,7 @@ MonoBehaviour:
     type: 3}
   nameNodePrefab: {fileID: 2676619418612080390, guid: d856c094618734b5fa067d0dd0cc5cad,
     type: 3}
+  disabler: {fileID: 0}
 --- !u!114 &735066010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +391,7 @@ MonoBehaviour:
   dispObj: {fileID: 1435235192}
   speedUnit: 0.1
   speedDefault: 1
+  disabler: {fileID: 1435235196}
 --- !u!114 &735066011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,12 +404,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a25c14f9697404ab4b31f69b5624d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuImage: {fileID: 1023231202}
+  menuImage: {fileID: 1618184546}
   menuFrame: {fileID: 1023231198}
   plInfo: {fileID: 11400000, guid: 65622c88d9f924b039cc892b1bfc90fb, type: 2}
   difNodePrefab: {fileID: 1792643711083056406, guid: 96f6636daa09b4826ab7941c50173e04,
     type: 3}
   backGround: {fileID: 1618184543}
+  disabler: {fileID: 1618184548}
 --- !u!114 &735066012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +524,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1023231201}
   - component: {fileID: 1023231200}
-  - component: {fileID: 1023231202}
   - component: {fileID: 1023231198}
   - component: {fileID: 1023231199}
   m_Layer: 5
@@ -569,6 +576,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!222 &1023231200
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -596,35 +604,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1023231202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023231197}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1184346163
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +888,7 @@ GameObject:
   - component: {fileID: 1435235193}
   - component: {fileID: 1435235195}
   - component: {fileID: 1435235194}
+  - component: {fileID: 1435235196}
   m_Layer: 5
   m_Name: SpeedMenu
   m_TagString: Untagged
@@ -952,6 +932,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -974,6 +955,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435235192}
   m_CullTransparentMesh: 0
+--- !u!114 &1435235196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435235192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbcdf077243874cd1a41bb4ece475b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  enableColor: {r: 1, g: 1, b: 1, a: 1}
+  colorNodes:
+  - {fileID: 1435235194}
 --- !u!1 &1462278822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1035,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &1462278825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,6 +1069,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1145,6 +1144,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1183,6 +1183,7 @@ GameObject:
   - component: {fileID: 1618184547}
   - component: {fileID: 1618184546}
   - component: {fileID: 1618184545}
+  - component: {fileID: 1618184548}
   m_Layer: 5
   m_Name: DifBackGround
   m_TagString: Untagged
@@ -1238,6 +1239,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1260,6 +1262,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618184543}
   m_CullTransparentMesh: 0
+--- !u!114 &1618184548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618184543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbcdf077243874cd1a41bb4ece475b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  enableColor: {r: 1, g: 1, b: 1, a: 1}
+  colorNodes:
+  - {fileID: 1618184546}
 --- !u!1 &1699936968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1356,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1515,6 +1534,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
